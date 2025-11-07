@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventum - Descubre Experiencias Únicas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      background: #ffffff;
+    }
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #f4d03f 0%, #f39c12 50%, #d68910 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .bg-gold-gradient {
+      background: linear-gradient(135deg, #f4d03f 0%, #f39c12 50%, #d68910 100%);
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    .float-animation {
+      animation: float 8s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0% { 
+        left: -100%;
+      }
+      100% { 
+        left: 100%;
+      }
+    }
+    .shimmer-effect {
+      position: relative;
+      overflow: hidden;
+    }
+    .shimmer-effect::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+      animation: shimmer 3s infinite;
+      z-index: 1;
+    }
+    .btn-futuristic {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      backdrop-filter: blur(10px);
+    }
+    .btn-futuristic::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+      z-index: 1;
+    }
+    .btn-futuristic:hover::before {
+      left: 100%;
+    }
+    .btn-futuristic:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
+    }
+    .btn-futuristic > * {
+      position: relative;
+      z-index: 2;
+    }
+    .card-modern {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .card-modern:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      border-color: rgba(212, 175, 55, 0.3);
+    }
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+    }
+    .liquid-bg {
+      background: linear-gradient(135deg, rgba(244, 208, 63, 0.1) 0%, rgba(243, 156, 18, 0.1) 50%, rgba(214, 137, 16, 0.1) 100%);
+      backdrop-filter: blur(40px);
+    }
+    .section-spacing {
+      padding: 120px 0;
+    }
+    @media (max-width: 768px) {
+      .section-spacing {
+        padding: 80px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-effect">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <div class="flex items-center space-x-2">
+          <img src="logo.png" alt="Eventum" class="w-10 h-10 rounded-lg object-cover" />
+          <span class="text-2xl font-display font-bold text-gray-900">Eventum</span>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#features" class="text-gray-700 hover:text-amber-600 transition-colors font-medium">Características</a>
+          <a href="#how-it-works" class="text-gray-700 hover:text-amber-600 transition-colors font-medium">Cómo Funciona</a>
+          <a href="#testimonials" class="text-gray-700 hover:text-amber-600 transition-colors font-medium">Reseñas</a>
+          <a href="video-intro.html" class="btn-futuristic px-6 py-2.5 bg-gold-gradient text-white font-semibold rounded-lg">
+            Comenzar
+          </a>
+        </div>
+        <button class="md:hidden p-2 text-gray-700">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-start justify-center overflow-hidden pt-20">
+    <!-- Subtle background gradient -->
+    <div class="absolute inset-0 bg-gradient-to-br from-amber-50/30 via-white to-yellow-50/20"></div>
+    
+    <!-- Floating elements -->
+    <div class="absolute top-20 right-20 w-72 h-72 bg-amber-200/20 rounded-full blur-3xl float-animation"></div>
+    <div class="absolute bottom-20 left-20 w-96 h-96 bg-yellow-200/20 rounded-full blur-3xl float-animation" style="animation-delay: 2s;"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-4 pb-12">
+      <div class="text-center max-w-4xl mx-auto">
+        <!-- Logo/Badge -->
+        <div class="inline-flex items-center justify-center mb-8 fade-in-up">
+          <img src="logo.png" alt="Eventum" class="w-48 h-48 rounded-2xl object-cover float-animation" />
+        </div>
+
+        <h1 class="text-6xl sm:text-7xl lg:text-8xl font-display font-bold text-gray-900 mb-6 fade-in-up" style="animation-delay: 0.1s;">
+          Eventum
+        </h1>
+        <p class="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-700 mb-6 fade-in-up" style="animation-delay: 0.2s;">
+          Descubre experiencias únicas
+        </p>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed fade-in-up" style="animation-delay: 0.3s;">
+          Tu asistente personal inteligente para encontrar las mejores actividades, eventos y experiencias. Personalizado según tus gustos y estado de ánimo.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center fade-in-up" style="animation-delay: 0.4s;">
+          <a href="video-intro.html" class="btn-futuristic shimmer-effect px-10 py-4 bg-gold-gradient text-white text-lg font-semibold rounded-xl shadow-[0_8px_30px_rgba(212,175,55,0.3)] relative">
+            <span class="relative z-10">Comenzar ahora</span>
+          </a>
+          <button onclick="scrollToFeatures()" class="px-10 py-4 bg-white text-gray-700 text-lg font-semibold rounded-xl border-2 border-gray-200 hover:border-amber-400 hover:text-amber-600 transition-all">
+            Explorar más
+          </button>
+        </div>
+
+        <p class="text-sm text-gray-500 mt-8 fade-in-up" style="animation-delay: 0.5s;">
+          Sin tarjeta de crédito • Configuración en minutos • Cancela cuando quieras
+        </p>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section-spacing bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-20">
+        <h2 class="text-5xl sm:text-6xl font-display font-bold text-gray-900 mb-6">
+          Todo lo que necesitas
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Una plataforma completa diseñada para ayudarte a descubrir y vivir experiencias increíbles
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="card-modern glass-card bg-white p-10 rounded-2xl fade-in-up">
+          <div class="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center mb-6">
+            <span class="text-3xl">🎯</span>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Recomendaciones inteligentes</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Basadas en tus gustos y estado de ánimo. Eventum aprende de ti para sugerirte las mejores experiencias.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="card-modern glass-card bg-white p-10 rounded-2xl fade-in-up" style="animation-delay: 0.1s;">
+          <div class="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center mb-6">
+            <span class="text-3xl">🗺️</span>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Mapa interactivo</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Visualiza todos los eventos en tiempo real. Encuentra actividades cerca de ti y descubre nuevos lugares.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="card-modern glass-card bg-white p-10 rounded-2xl fade-in-up" style="animation-delay: 0.2s;">
+          <div class="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center mb-6">
+            <span class="text-3xl">💝</span>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Gestiona tus eventos</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Organiza tus propios eventos, guarda favoritos y gestiona tus inscripciones. Todo en un solo lugar.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="card-modern glass-card bg-white p-10 rounded-2xl fade-in-up" style="animation-delay: 0.3s;">
+          <div class="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center mb-6">
+            <span class="text-3xl">🔍</span>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Búsqueda avanzada</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Filtra por categoría, fecha, precio, horario y más. Encuentra exactamente lo que buscas en segundos.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="card-modern glass-card bg-white p-10 rounded-2xl fade-in-up" style="animation-delay: 0.4s;">
+          <div class="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center mb-6">
+            <span class="text-3xl">⭐</span>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Eventos destacados</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Descubre los eventos más populares y mejor valorados. Con reseñas y calificaciones verificadas.
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="card-modern glass-card bg-white p-10 rounded-2xl fade-in-up" style="animation-delay: 0.5s;">
+          <div class="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center mb-6">
+            <span class="text-3xl">💎</span>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Planes premium</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Accede a funciones exclusivas, sin anuncios, recuerdos automáticos y más con nuestros planes premium.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works Section -->
+  <section id="how-it-works" class="section-spacing bg-gradient-to-br from-gray-50 to-amber-50/30">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-20">
+        <h2 class="text-5xl sm:text-6xl font-display font-bold text-gray-900 mb-6">
+          Cómo funciona
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          En solo 3 pasos simples, comienza a descubrir experiencias increíbles
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="text-center fade-in-up">
+          <div class="w-24 h-24 bg-gold-gradient rounded-2xl flex items-center justify-center mx-auto mb-8 text-4xl font-bold text-white shadow-lg">
+            1
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Cuéntanos sobre ti</h3>
+          <p class="text-gray-600 leading-relaxed text-lg">
+            Selecciona tus gustos e intereses. ¿Cómo te sientes hoy? Eventum se adapta a tu estado de ánimo.
+          </p>
+        </div>
+
+        <div class="text-center fade-in-up" style="animation-delay: 0.2s;">
+          <div class="w-24 h-24 bg-gold-gradient rounded-2xl flex items-center justify-center mx-auto mb-8 text-4xl font-bold text-white shadow-lg">
+            2
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Explora y descubre</h3>
+          <p class="text-gray-600 leading-relaxed text-lg">
+            Navega por eventos personalizados, usa el mapa interactivo o desliza tarjetas como en una app moderna.
+          </p>
+        </div>
+
+        <div class="text-center fade-in-up" style="animation-delay: 0.4s;">
+          <div class="w-24 h-24 bg-gold-gradient rounded-2xl flex items-center justify-center mx-auto mb-8 text-4xl font-bold text-white shadow-lg">
+            3
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Vive la experiencia</h3>
+          <p class="text-gray-600 leading-relaxed text-lg">
+            Inscríbete en eventos, organiza los tuyos propios y comparte tus experiencias con la comunidad.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="section-spacing bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-20">
+        <h2 class="text-5xl sm:text-6xl font-display font-bold text-gray-900 mb-6">
+          Lo que dicen nuestros usuarios
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Miles de personas ya están descubriendo experiencias increíbles con Eventum
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="card-modern glass-card bg-white p-8 rounded-2xl fade-in-up">
+          <div class="flex items-center mb-6">
+            <div class="w-16 h-16 bg-gold-gradient rounded-full flex items-center justify-center text-xl font-bold text-white mr-4">
+              MC
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900">María Campos</h4>
+              <div class="flex text-amber-400 mt-1">
+                <span>★★★★★</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-gray-600 leading-relaxed italic">
+            "Eventum cambió completamente cómo encuentro actividades. Las recomendaciones son perfectas y siempre encuentro algo que me encanta. ¡La mejor app!"
+          </p>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="card-modern glass-card bg-white p-8 rounded-2xl fade-in-up" style="animation-delay: 0.1s;">
+          <div class="flex items-center mb-6">
+            <div class="w-16 h-16 bg-gold-gradient rounded-full flex items-center justify-center text-xl font-bold text-white mr-4">
+              JL
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900">José López</h4>
+              <div class="flex text-amber-400 mt-1">
+                <span>★★★★★</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-gray-600 leading-relaxed italic">
+            "El mapa interactivo es genial. Puedo ver todos los eventos cerca de mí y planificar mi fin de semana perfectamente. Muy fácil de usar."
+          </p>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="card-modern glass-card bg-white p-8 rounded-2xl fade-in-up" style="animation-delay: 0.2s;">
+          <div class="flex items-center mb-6">
+            <div class="w-16 h-16 bg-gold-gradient rounded-full flex items-center justify-center text-xl font-bold text-white mr-4">
+              AG
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900">Ana García</h4>
+              <div class="flex text-amber-400 mt-1">
+                <span>★★★★★</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-gray-600 leading-relaxed italic">
+            "Me encanta poder organizar mis propios eventos. La interfaz es hermosa y todo funciona perfectamente. Definitivamente recomiendo Eventum."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="section-spacing bg-gradient-to-br from-gray-50 to-amber-50/30">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+        <div class="fade-in-up">
+          <div class="text-6xl font-display font-bold text-gold-gradient mb-3">500+</div>
+          <div class="text-gray-600 font-medium text-lg">Eventos activos</div>
+        </div>
+        <div class="fade-in-up" style="animation-delay: 0.1s;">
+          <div class="text-6xl font-display font-bold text-gold-gradient mb-3">10K+</div>
+          <div class="text-gray-600 font-medium text-lg">Usuarios activos</div>
+        </div>
+        <div class="fade-in-up" style="animation-delay: 0.2s;">
+          <div class="text-6xl font-display font-bold text-gold-gradient mb-3">50+</div>
+          <div class="text-gray-600 font-medium text-lg">Categorías</div>
+        </div>
+        <div class="fade-in-up" style="animation-delay: 0.3s;">
+          <div class="text-6xl font-display font-bold text-gold-gradient mb-3">4.8★</div>
+          <div class="text-gray-600 font-medium text-lg">Calificación</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section-spacing bg-gold-gradient relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <h2 class="text-5xl sm:text-6xl font-display font-bold text-white mb-6">
+        ¿Listo para empezar?
+      </h2>
+      <p class="text-xl text-white/90 mb-12 max-w-2xl mx-auto">
+        Únete a miles de personas que ya están descubriendo experiencias increíbles
+      </p>
+          <a href="video-intro.html" class="btn-futuristic inline-block px-12 py-5 bg-white text-amber-700 text-xl font-semibold rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] shimmer-effect">
+        Comenzar ahora — Es gratis
+      </a>
+      <p class="text-white/80 mt-8 text-sm">
+        Sin tarjeta de crédito • Configuración en 2 minutos • Cancela cuando quieras
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <img src="logo.png" alt="Eventum" class="w-20 h-20 rounded-lg object-cover" />
+            <span class="text-xl font-display font-bold">Eventum</span>
+          </div>
+          <p class="text-gray-400 leading-relaxed">
+            Descubre experiencias únicas. Tu asistente personal para encontrar las mejores actividades.
+          </p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4 text-white">Producto</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="#features" class="hover:text-amber-400 transition-colors">Características</a></li>
+            <li><a href="#how-it-works" class="hover:text-amber-400 transition-colors">Cómo funciona</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Precios</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4 text-white">Compañía</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Sobre nosotros</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Blog</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4 text-white">Legal</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Privacidad</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Términos</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+        <p>&copy; 2024 Eventum. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function scrollToFeatures() {
+      document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Fade in on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.fade-in-up').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(40px)';
+      el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
